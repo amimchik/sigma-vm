@@ -1,0 +1,24 @@
+Instruction:
+
+each instruction is 16 bytes long
+0-1 byte - opcode
+2-3 byte - flag1
+4-5 byte - flag2
+6-7 byte - flag3
+
+8-15 byte - arg
+
+=========================
+
+
+MOV(0x0000):
+
+moves value from first register to second
+
+syntax:
+0x0000 (2 bytes - flag of left arg) (2 bytes - flag of right arg) [larg] [rarg]
+
+if flag of arg is 0x0, that means that this is one of main registars and argument represents number of 
+
+
+0x0000 0x0000

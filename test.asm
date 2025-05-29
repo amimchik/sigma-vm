@@ -1,0 +1,5 @@
+LDI A 0x1101;
+LDI B 0x0111;
+BAND;
+LDI A 0x6;
+JMP;
