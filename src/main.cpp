@@ -6,29 +6,6 @@
 
 #include <iomanip>
 
-
-void loadProgram(VirtualMachine& vm, std::initializer_list<uint16_t> data) {
-    auto it = data.begin();
-    size_t i = 0;
-    while (it != data.end()) {
-        if (std::distance(it, data.end()) < 8) {
-            throw std::runtime_error("Incomplete instruction: expected 8 uint16_t");
-        }
-
-        uint64_t instr = 0;
-        uint64_t val = 0;
-        for (int j = 0; j < 4; ++j) {
-            instr |= (uint64_t)(*it++) << (j * 16);
-        }
-        for (int j = 0; j < 4; ++j) {
-            val |= (uint64_t)(*it++) << (j * 16);
-        }
-
-        vm.ram.setAt(i++, instr);
-        vm.ram.setAt(i++, val);
-    }
-}
-
 int main() {
     std::string input;
     int c;
