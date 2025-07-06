@@ -1,8 +1,8 @@
 #pragma once
 
 #include <deque>
-#include <stdexcept>
 #include <sasm/Lexer.hpp>
+#include <stdexcept>
 
 enum class InstructionType {
     Mov,
@@ -59,6 +59,7 @@ struct Register {
 };
 
 struct Instruction {
+    bool expandable;
     InstructionType type;
     Register left;
     Register right;

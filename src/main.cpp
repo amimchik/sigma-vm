@@ -1,10 +1,9 @@
+#include <iomanip>
 #include <iostream>
+#include <sasm/CodeGenerator.hpp>
 #include <sasm/Lexer.hpp>
 #include <sasm/Parser.hpp>
-#include <sasm/CodeGenerator.hpp>
 #include <sigma-vm/VirtualMachine.hpp>
-
-#include <iomanip>
 
 int main() {
     std::string input;
@@ -26,7 +25,7 @@ int main() {
     }
 
     for (size_t i = 0; i < code.size() * 2; i++) {
-    std::cout << std::hex << std::setw(16) << std::setfill('0') << vm.ram.getAt(i) << "\n";
+        std::cout << std::hex << std::setw(16) << std::setfill('0') << vm.ram.getAt(i) << "\n";
     }
     vm.launch();
 }
