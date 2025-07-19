@@ -1,6 +1,6 @@
 # Compiler and flags
 CXX := clang++
-CXXFLAGS := -Wall -Wextra -std=c++17 -Iinclude
+CXXFLAGS := -Wall -Wextra -std=c++23 -Iinclude
 
 # Directories
 SRC_DIR := src
@@ -18,23 +18,27 @@ all: dirs $(BIN)
 
 # Link all object files into the final binary
 $(BIN): $(OBJS)
-	$(CXX) $(CXXFLAGS) $^ -o $@
+	@echo "Linking $(patsubst $(OBJ_DIR)/%,%,$^) -> TARGET"
+	@$(CXX) $(CXXFLAGS) $^ -o $@
 
 # Compile each .cpp to corresponding .o in build/
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(dir $@)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	@echo "Compiling $(patsubst $(SRC_DIR)/%,%,$<) -> $(patsubst $(OBJ_DIR)/%,%,$@)"
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Run the binary
 run: dirs $(BIN)
-	./$(BIN)
+	@echo "Running TARGET"
+	@./$(BIN)
 
 dirs:
-	mkdir -p $(OBJ_DIR) $(BIN_DIR)
+	@mkdir -p $(OBJ_DIR) $(BIN_DIR)
 
 # Remove binary and object files
 clean:
-	rm -rf $(BUILD_DIR)
+	@echo "Removing BUILD dir"
+	@rm -rf $(BUILD_DIR)
 
 # Full rebuild
 rebuild: clean all
