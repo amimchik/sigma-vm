@@ -1,6 +1,7 @@
 #!/usr/bin/sh
+
+source ./config.sh
+
 mkdir build
-cd build
-cmake ..
-make
-cd ..
+cmake -B build -S . 
+cmake --build build

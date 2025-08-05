@@ -1,3 +1,3 @@
 #!/usr/bin/sh
 ./build.sh
-./build/my_program
+./build/sigma-vm
